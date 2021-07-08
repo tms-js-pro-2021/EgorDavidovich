@@ -1,14 +1,17 @@
+import { getDateNow } from './date';
 import { getDateBirthday} from './getAgeInDays';
 
 
+jest.mock('../utils/date', () => ({
+    __esModule: true,
+    getDateNow: () => 1625741349667,
+
+}))
+
 describe('getAgeInDays', () => {
 
-    it("find my age", () => {
-        const birthYear = 1994;
-        const birthMonth = 5;
-        const birthDay = 3;
-        const result = getDateBirthday(birthYear, birthMonth, birthDay);
-        expect(result).toBe(27);       
-
+    it("найти количество дней с дня рождения", () => {
+        const result = Math.round((getDateNow() - getDateBirthday())/1000/60/60/24)
+        expect(result).toBe(9928);       
     })
 })
