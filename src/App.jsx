@@ -4,25 +4,45 @@ export default function App() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        console.log('mounted');
+    // useEffect(() => {
+    //     console.log('mounted');
 
-        return () => {
-            console.log('unmounting');
-        }
-    }, []);
+    //     return () => {
+    //         console.log('unmounting');
+    //     }
+    // }, []);
+
+    const setAnyPassword = (password) => {
+        setPassword({ '': password.target.value });
+      };
+
+      const setAnyLogin = (login) => {
+        setLogin({ '': login.target.value });
+      };
+
 
     const handleLoginClick = () => {
-        setLogin('');
+        console.log('Login-', login)
+        console.log('Password-', '*****')
     };
 
     return (
-        <div className ="cls-1" style={{background: 'blue'}}>
-            <button onClick={() => setLogin("login")}>mount</button>
-            {login && (
-                <button onClick={handleLoginClick}>{login}</button>
-            )}
+        <div className="cls-1" style={{
+            width: '100%',
+            maxWidth: '160px',
+            margin: '0 auto',
+        }}>
+            <div className="cls-form" style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+            }}>
+                <input className="cls-input" style={{ marginBottom: '10px' }} onChange={(e) => setAnyLogin(e)} type="text"  placeholder="Login"></input>
+                <input className="cls-input" style={{ marginBottom: '10px' }} onChange={(e) => setAnyPassword(e)} type="password"  placeholder="Password"></input>
+                <button onClick={(e) => {
+                    handleLoginClick()}}>Log In</button>
+            </div>
+   
         </div>
     );
 }
-
