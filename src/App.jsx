@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Button from '@material-ui/core/Button';
 
 export default function App() {
     const [login, setLogin] = useState('');
@@ -13,36 +14,34 @@ export default function App() {
     // }, []);
 
     const setAnyPassword = (password) => {
-        setPassword({ '': password.target.value });
-      };
+        setPassword({ 'Password': password.target.value });
+    };
 
-      const setAnyLogin = (login) => {
-        setLogin({ '': login.target.value });
-      };
+    const setAnyLogin = (login) => {
+        setLogin({ 'Login': login.target.value });
+    };
 
 
     const handleLoginClick = () => {
-        console.log('Login-', login)
-        console.log('Password-', '*****')
+        console.log(login)
+        console.log(password)
     };
 
     return (
         <div className="cls-1" style={{
             width: '100%',
             maxWidth: '160px',
-            margin: '0 auto',
+            margin: '0 auto'
         }}>
             <div className="cls-form" style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between'
             }}>
-                <input className="cls-input" style={{ marginBottom: '10px' }} onChange={(e) => setAnyLogin(e)} type="text"  placeholder="Login"></input>
-                <input className="cls-input" style={{ marginBottom: '10px' }} onChange={(e) => setAnyPassword(e)} type="password"  placeholder="Password"></input>
-                <button onClick={(e) => {
-                    handleLoginClick()}}>Log In</button>
+                <input className="cls-input" style={{ marginBottom: '10px' }} onChange={(e) => setAnyLogin(e)} type="text" placeholder="Login"></input>
+                <input onChange={(e) => setAnyPassword(e)} type="password" placeholder="Password"></input>
+                <Button className="cls-btn" style={{ marginTop: '10px' }} variant="contained" color="primary" onClick={(e) => { handleLoginClick() }}>Log In</Button>
             </div>
-   
         </div>
     );
 }
