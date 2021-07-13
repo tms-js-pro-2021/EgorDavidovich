@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export default function App() {
     const [login, setLogin] = useState('');
@@ -13,18 +14,18 @@ export default function App() {
     //     }
     // }, []);
 
-    const setAnyPassword = (password) => {
-        setPassword({ 'Password': password.target.value });
+    const setAnyPassword = (e) => {
+        setPassword(e.target.value);
     };
 
-    const setAnyLogin = (login) => {
-        setLogin({ 'Login': login.target.value });
+    const setAnyLogin = (e) => {
+        setLogin(e.target.value);
     };
 
 
     const handleLoginClick = () => {
-        console.log(login)
-        console.log(password)
+        console.log(`Login - ${login}`)
+        console.log(`Password - ${password}`)
     };
 
     return (
@@ -38,9 +39,9 @@ export default function App() {
                 flexDirection: 'column',
                 justifyContent: 'space-between'
             }}>
-                <input className="cls-input" style={{ marginBottom: '10px' }} onChange={(e) => setAnyLogin(e)} type="text" placeholder="Login"></input>
-                <input onChange={(e) => setAnyPassword(e)} type="password" placeholder="Password"></input>
-                <Button className="cls-btn" style={{ marginTop: '10px' }} variant="contained" color="primary" onClick={(e) => { handleLoginClick() }}>Log In</Button>
+                <TextField className="cls-input" style={{ marginBottom: '10px' }}  onChange={(e) => setAnyLogin(e)} id="outlined-basic" label="Login" variant="outlined" />
+                <TextField onChange={(e) => setAnyPassword(e)}  label="Password" type="password" variant="outlined" />
+                <Button className="cls-btn" style={{ marginTop: '10px', height: '60px' }} variant="contained" color="primary" onClick = {handleLoginClick}>Log In</Button>
             </div>
         </div>
     );
