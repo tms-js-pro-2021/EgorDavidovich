@@ -26,6 +26,8 @@ export default function App() {
     const handleLoginClick = () => {
         console.log(`Login - ${login}`)
         console.log(`Password - ${password}`)
+        setLogin("")
+        setPassword("")
     };
 
     return (
@@ -39,9 +41,9 @@ export default function App() {
                 flexDirection: 'column',
                 justifyContent: 'space-between'
             }}>
-                <TextField className="cls-input" style={{ marginBottom: '10px' }}  onChange={(e) => setAnyLogin(e)} id="outlined-basic" label="Login" variant="outlined" />
-                <TextField onChange={(e) => setAnyPassword(e)}  label="Password" type="password" variant="outlined" />
-                <Button className="cls-btn" style={{ marginTop: '10px', height: '60px' }} variant="contained" color="primary" onClick = {handleLoginClick}>Log In</Button>
+                <TextField  style={{ marginBottom: '10px' }} value={login} onChange={(e) => setAnyLogin(e)} id="outlined-basic" label="Login" variant="outlined" />
+                <TextField onChange={(e) => setAnyPassword(e)}  label="Password" value={password} type="password" variant="outlined" />
+                <Button style={{ marginTop: '10px', height: '60px' }} variant="contained" color="primary" onClick = {handleLoginClick}>Log In</Button>
             </div>
         </div>
     );
