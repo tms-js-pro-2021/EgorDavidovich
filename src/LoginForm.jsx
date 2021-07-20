@@ -34,12 +34,14 @@ export default function LoginForm() {
   };
 
   return (
+ 
     <div
       className="cls-1"
       style={{
         width: '100%',
-        maxWidth: '160px',
-        margin: '0 auto',
+        height: '100%',
+        maxWidth: '1200px',
+        maxHeight: '1200px',
       }}
     >
       <div
@@ -48,6 +50,8 @@ export default function LoginForm() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
+          maxWidth: '200px',
+          margin: '150px auto'
         }}
       >
         <TextField
