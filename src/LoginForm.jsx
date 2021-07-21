@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-
 export default function LoginForm() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -16,11 +15,11 @@ export default function LoginForm() {
   //     }
   // }, []);
 
-  const setAnyPassword = (e) => {
+  const setAnyPassword = e => {
     setPassword(e.target.value);
   };
 
-  const setAnyLogin = (e) => {
+  const setAnyLogin = e => {
     setLogin(e.target.value);
   };
 
@@ -29,12 +28,11 @@ export default function LoginForm() {
     console.log(`Login - ${login}`);
     // eslint-disable-next-line no-console
     console.log(`Password - ${password}`);
-    setLogin("")
-    setPassword("")
+    setLogin('');
+    setPassword('');
   };
 
   return (
- 
     <div
       className="cls-1"
       style={{
@@ -51,20 +49,20 @@ export default function LoginForm() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           maxWidth: '200px',
-          margin: '150px auto'
+          margin: '150px auto',
         }}
       >
         <TextField
           className="cls-input"
           style={{ marginBottom: '10px' }}
-          onChange={(e) => setAnyLogin(e)}
+          onChange={e => setAnyLogin(e)}
           id="outlined-basic"
           value={login}
           label="Login"
           variant="outlined"
         />
         <TextField
-          onChange={(e) => setAnyPassword(e)}
+          onChange={e => setAnyPassword(e)}
           label="Password"
           value={password}
           type="password"
