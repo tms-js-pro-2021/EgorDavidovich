@@ -38,10 +38,21 @@ export default function LoginForm() {
       style={{
         width: '100%',
         height: '100%',
-        maxWidth: '1200px',
-        maxHeight: '1200px',
+        backgroundImage: `url('https://klv-oboi.by/img/gallery/32/thumbs/thumb_l_38259.jpg')`,
+        position: 'absolute',
+        backgroundPosition: 'center'
       }}
     >
+        <h1
+          style={{ 
+            marginTop: '50px',
+            fontSize: '100px',
+            textAlign: 'center',
+            color: '#3f51b5',
+          }}
+        >
+          WELCOME
+        </h1>
       <div
         className="cls-form"
         style={{
@@ -49,9 +60,10 @@ export default function LoginForm() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           maxWidth: '200px',
-          margin: '150px auto',
+          margin: '120px auto',
         }}
       >
+
         <TextField
           className="cls-input"
           style={{ marginBottom: '10px' }}
