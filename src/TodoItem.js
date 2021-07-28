@@ -1,20 +1,30 @@
-import React from 'react'
+import { Checkbox } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete';
+import React, {useState} from 'react'
+
+
 
 export default function TodoItem({title, id, completed}) {
+
+const [checked,setChecked] = useState(completed)
+
+const cls = ['todo']
+
+if (checked) {
+  cls.push('completed')
+}
+
   return (
-    <li className="todo">
+    <li className={cls.join(' ')}>
       <label>
-        <input
-          type="checkbox"
-          defaultChecked={false}
+        <Checkbox
+          checked={checked}
+          onChange={() => setChecked(!checked)}
         />
         <span>{title}</span>
-
-        <i
-          className="material-icons red-text"
-        >
-          delete
-        </i>
+        <button >
+        <DeleteIcon />
+        </button>
       </label>
     </li>
   )
