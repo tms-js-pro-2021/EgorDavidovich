@@ -3,10 +3,10 @@ import TodoItem from './TodoItem';
 
 export default function TodoList({ todos }) {
   return (
-    <ul>
+    <div>
       {todos.map(item => (
         <TodoItem key={item.id} {...item} />
       ))}
-    </ul>
+    </div>
   );
 }

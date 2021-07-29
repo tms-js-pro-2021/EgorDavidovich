@@ -30,6 +30,7 @@ export default function Todo() {
       <Typography component="div">
         <h1>Todo app</h1>
         <Input
+          // eslint-disable-next-line react/jsx-boolean-value
           fullWidth={true}
           className="cls-input"
           type="text"

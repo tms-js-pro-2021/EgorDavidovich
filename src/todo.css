@@ -10,15 +10,11 @@ body {
 }
 
 .todo {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .todo.completed span {
   text-decoration: line-through;
-}
-
-.cls-input {
-  min-width: auto;
 }
 
 .todo label {
@@ -28,9 +24,5 @@ body {
   justify-content: space-between;
   cursor: pointer;
   background: #f3f3f3;
-  padding: 1rem;
+  padding: 1rem 0;
 }
-
-/* .todo i {
-  z-index: 2;
-} */
