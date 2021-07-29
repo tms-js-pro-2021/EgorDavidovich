@@ -21,9 +21,35 @@ export default function Todo() {
           completed: false,
         },
       ]);
+
+      setLocalStorageData('todos', [
+        ...todos,
+        {
+          id: Date.now(),
+          title: todoTitle,
+          completed: false,
+        },
+      ]);
       setTodoTitle('');
     }
   };
+
+  // export default const deleteTodo = index => {
+  //   const clonedTodos = [...todos];
+  //   clonedTodos.splice(index, 1);
+  //   setTodos(clonedTodos);
+  //   setLocalStorageData('todos', clonedTodos);
+  // };
+
+  // const setCheckedTodoHandler = index => {
+  //   const clonedTodos = [...todos];
+  //   clonedTodos.splice(index, 1) , {
+  //     ...clonedTodos[index],
+  //     completed: !clonedTodos[index].completed
+  //   });
+  //   setTodos(clonedTodos);
+  //   setLocalStorageData('todos', clonedTodos);
+  // }
 
   return (
     <Container className="main">

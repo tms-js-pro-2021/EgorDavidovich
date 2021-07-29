@@ -2,6 +2,7 @@ import { Checkbox } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import React, { useState } from 'react';
 import './todo.css';
+import deleteTodo from './Todo';
 
 export default function TodoItem({ title, id, completed }) {
   const [checked, setChecked] = useState(completed);
@@ -17,7 +18,7 @@ export default function TodoItem({ title, id, completed }) {
       <label>
         <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
         <span>{title}</span>
-        <button>
+        <button onClick={deleteTodo}>
           <DeleteIcon />
         </button>
       </label>
