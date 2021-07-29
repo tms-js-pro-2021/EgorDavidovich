@@ -5,12 +5,20 @@ body {
   padding: 0;
 }
 
+.main {
+  text-align: center;
+}
+
 .todo {
   margin-bottom: 1rem;
 }
 
 .todo.completed span {
   text-decoration: line-through;
+}
+
+.cls-input {
+  min-width: auto;
 }
 
 .todo label {
@@ -23,7 +31,6 @@ body {
   padding: 1rem;
 }
 
-.todo i {
+/* .todo i {
   z-index: 2;
-}
-
+} */
