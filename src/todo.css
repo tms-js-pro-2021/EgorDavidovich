@@ -11,6 +11,7 @@ body {
 
 .todo {
   margin: 1rem 0;
+  display: flex;
 }
 
 .todo.completed span {
@@ -25,4 +26,8 @@ body {
   cursor: pointer;
   background: #f3f3f3;
   padding: 1rem 0;
+}
+
+.delete_button{
+  margin-right: .5rem;
 }

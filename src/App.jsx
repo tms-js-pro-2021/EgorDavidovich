@@ -2,16 +2,19 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-// import LoginForm from './LoginForm'
+import LoginForm from './LoginForm'
 import Todo from './Todo'
+
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login">
-          {/* <LoginForm /> */}
+        <Route path="/exact">
           <Todo />
+        </Route>
+        <Route path="/login">
+          <LoginForm />
         </Route>
         <Route>
           404 not found <Link to="/login"></Link>{' '}

@@ -1,72 +1,77 @@
-import { Container, Input, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import { Container, Input, Typography, Button } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import './todo.css';
 
+
+
+
 export default function Todo() {
-  const [todos, setTodos] = useState([
-    { id: 1, title: 'First todo', completed: false },
-    { id: 2, title: 'Second todo', completed: false },
-  ]);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const raw = localStorage.getItem('todos') || []
+    setTodos(JSON.parse(raw))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const [todoTitle, setTodoTitle] = useState('');
 
-  const addTodo = event => {
-    if (event.key === 'Enter') {
-      setTodos([
-        ...todos,
-        {
-          id: Date.now(),
-          title: todoTitle,
-          completed: false,
-        },
-      ]);
-
-      setLocalStorageData('todos', [
-        ...todos,
-        {
-          id: Date.now(),
-          title: todoTitle,
-          completed: false,
-        },
-      ]);
-      setTodoTitle('');
-    }
+  const addTodo = () => {
+    setTodos([
+      ...todos,
+      {
+        id: Date.now(),
+        title: todoTitle,
+        completed: false,
+      },
+    ]);
+    setTodoTitle('');
   };
 
-  // export default const deleteTodo = index => {
-  //   const clonedTodos = [...todos];
-  //   clonedTodos.splice(index, 1);
-  //   setTodos(clonedTodos);
-  //   setLocalStorageData('todos', clonedTodos);
-  // };
+  const deleteTodo = index => {
+    const clonedTodos = [...todos];
+    clonedTodos.splice(index, 1);
+    setTodos(clonedTodos);
+  }
 
-  // const setCheckedTodoHandler = index => {
-  //   const clonedTodos = [...todos];
-  //   clonedTodos.splice(index, 1) , {
-  //     ...clonedTodos[index],
-  //     completed: !clonedTodos[index].completed
-  //   });
-  //   setTodos(clonedTodos);
-  //   setLocalStorageData('todos', clonedTodos);
-  // }
+  const setChckedTodoHandler = index => {
+    const clonedTodos = [...todos];
+    clonedTodos.splice(index, 1, {
+      ...clonedTodos[index],
+      completed: !clonedTodos[index].completed
+    });
+    setTodos(clonedTodos);
+  }
 
   return (
-    <Container className="main">
-      <Typography component="div">
+    <Container>
+      <Typography component='div'>
         <h1>Todo app</h1>
-        <Input
-          // eslint-disable-next-line react/jsx-boolean-value
-          fullWidth={true}
-          className="cls-input"
-          type="text"
-          placeholder="Введите задачу"
-          value={todoTitle}
-          onChange={event => setTodoTitle(event.target.value)}
-          onKeyPress={addTodo}
+        <div className="todo">
+          <Input
+            fullWidth={true}
+            type="text"
+            placeholder="Enter a task"
+            value={todoTitle}
+            onChange={event => setTodoTitle(event.target.value)}
+            onKeyPress={e => e.key === 'Enter' ? addTodo() : null}
+          />
+          <Button
+            onClick={addTodo}
+            variant="contained"
+            color="primary">
+            Add TODO
+          </Button>
+        </div>
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          setChckedTodoHandler={setChckedTodoHandler}
         />
-
-        <TodoList todos={todos} />
       </Typography>
     </Container>
   );
