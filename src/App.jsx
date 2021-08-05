@@ -1,21 +1,25 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
-import LoginForm from './LoginForm'
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import AppContext from './AppContext';
+import LoginPage from './LoginPage';
+import TodoPage from './TodoPage';
 
 export default function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <LoginForm />
-        </Route>
-        <Route>
-          404 not found <Link to="/login"></Link>{' '}
-        </Route>
-      </Switch>
-    </Router>
-
+    <AppContext>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/" exact>
+            <TodoPage />
+          </Route>
+          <Route>
+            404 not found <Link to="/login">login</Link>
+          </Route>
+        </Switch>
+      </Router>
+    </AppContext>
   );
 }
