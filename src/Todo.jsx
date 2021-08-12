@@ -10,11 +10,6 @@ export default function Todo() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.todos) || []);
 
 
-
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
-
   const [todoTitle, setTodoTitle] = useState('');
 
   const addTodo = () => {
