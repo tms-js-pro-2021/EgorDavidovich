@@ -7,12 +7,9 @@ import './todo.css';
 
 
 export default function Todo() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.todos) || []);
 
-  useEffect(() => {
-    const raw = localStorage.getItem('todos') || []
-    setTodos(JSON.parse(raw))
-  }, [])
+
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))

@@ -10,7 +10,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/exact">
+        <Route path="/" exact>
           <Todo />
         </Route>
         <Route path="/login">
